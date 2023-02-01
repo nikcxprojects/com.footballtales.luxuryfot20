@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".PuzzleActivity">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_300sdp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias=".3">
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/gameTimer"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/accept_bg"
+        android:text="0"
+
+        android:textAlignment="center"
+        android:textColor="@color/teal_200"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bestsView"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="High Score"
+        android:visibility="gone"
+        android:textColor="@color/teal_200"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameTimer" />
+
+    <ImageButton
+        android:id="@+id/pauseButton"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:visibility="gone"
+        android:contentDescription="Pause"
+        app:layout_constraintEnd_toStartOf="@+id/bestsView"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moveCounter"
+        app:srcCompat="@android:drawable/ic_media_pause" />
+
+    <TextView
+        android:id="@+id/moveCounter"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/teal_200"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/gameTimer"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hintImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:contentDescription="Image Hint"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gridLayout"
+        app:layout_constraintTop_toBottomOf="@+id/gameTimer"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:color/transparent"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/hintButton"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="Show Hint"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/pauseContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background"
+        android:clickable="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNextPuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/accept_bg"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:paddingTop="@dimen/_2sdp"
+        android:text="Next Puzzle"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toTopOf="@+id/tvMainMenuPuzzle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+
+    <TextView
+        android:id="@+id/tvMainMenuPuzzle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/decline_bg"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:paddingTop="@dimen/_2sdp"
+        android:text="Main Menu"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNextPuzzle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

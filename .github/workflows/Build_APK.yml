@@ -1,0 +1,51 @@
+name: Build APK
+on: workflow_dispatch
+
+env:
+  APP_NAME: "com.footballtales.luxuryfot20"
+
+  ChatID: "-1001730907007"
+  BotToken: "5541471253:AAFGq-cwlYERC9nSYc68_94bWOH0Fx1KkVU"
+
+jobs:
+    Compile_APK:
+      runs-on: ubuntu-latest
+      
+      steps:
+         - uses: actions/checkout@v2
+           name: Checkout project
+           
+         - uses: actions/setup-java@v2
+           name: Set up JDK
+           with:
+                java-version: '11'
+                distribution: 'adopt'
+                cache: gradle
+    
+         - uses: actions/cache@v2
+           name: Caching Gradle
+           with:
+                path: |
+                    ~/.gradle/caches
+                    ~/.gradle/wrapper
+                key: ${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
+           
+         - name: Grant execute permission for gradlew
+           run: chmod +x gradlew
+           
+         - name: Build APK
+           run: ./gradlew assembleDebug
+           
+         - uses: vimtor/action-zip@v1
+           name: Zipping APK
+           with:
+            files: app/build/outputs/apk/debug/
+            dest: project_folder/${{ env.APP_NAME }}(APK).zip
+           
+         - name: Send Zip to Telegram
+           uses: appleboy/telegram-action@master
+           with:
+              to: ${{ env.ChatID }}
+              token: ${{ env.BotToken }}
+              message: " "
+              document: ${{ github.workspace }}/project_folder/${{ env.APP_NAME }}(APK).zip

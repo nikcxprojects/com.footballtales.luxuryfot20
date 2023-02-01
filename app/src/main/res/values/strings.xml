@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BW</string>
+
+
+    <string name="welcome_privacy_policy">
+    <font color="#000000">Please accept our</font>
+        <font color="#00000"><b><u>Privacy Policy</u></b></font>
+        <font color="00000">to use an app</font>
+    </string>
+</resources>
